@@ -1,0 +1,214 @@
+Sub ConditionalFormatting()
+
+
+Range("C11").Select
+
+    With Range("C11:C16").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=C11<=C$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("K11").Select
+
+    With Range("K11:K16").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=K11<=K$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("C18").Select
+
+    With Range("C18:C22").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=C18<=C$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("K18").Select
+
+    With Range("K18:K22").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=K18<=K$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+    
+Range("C24").Select
+
+    With Range("C24:C34").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=C24<=C$5")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("K24").Select
+
+    With Range("K24:K34").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=K24<=K$5")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+    
+Range("C39").Select
+
+    With Range("C39:C44").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=C39<=C$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("K39").Select
+
+    With Range("K39:K44").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=K39<=K$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+
+Range("C46").Select
+
+    With Range("C46:C50").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=C46<=C$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("K46").Select
+
+    With Range("K46:K50").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=K46<=K$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("C52").Select
+
+    With Range("C52:C62").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=C52<=C$5")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+
+Range("K52").Select
+
+    With Range("K52:K62").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=K52<=K$5")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+    
+    End With
+    
+Range("D11").Select
+
+    With Range("D11:I16").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=D11>D$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+        
+    End With
+
+Range("D39").Select
+
+    With Range("D39:I44").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=D39>D$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+        
+    End With
+    
+Range("D18").Select
+
+    With Range("D18:I22").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=D18>D$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+        
+    End With
+
+Range("D46").Select
+
+    With Range("D46:I50").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=D46>D$4")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+        
+    End With
+    
+Range("D24").Select
+
+    With Range("D24:I34").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=D24>D$5")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+        
+    End With
+
+Range("D52").Select
+
+    With Range("D52:I62").FormatConditions.Add( _
+        Type:=xlExpression, _
+        Formula1:="=D52>D$5")
+        
+        .Interior.Color = RGB(198, 239, 206)
+        .Font.Color = RGB(0, 97, 0)
+        
+    End With
+
+Range("J1:J65").FormatConditions.Delete
+
+
+End Sub
+
+
+Sub ClearFormatting()
+
+rspn = MsgBox("To clear all formatting", vbYesNo)
+If rspn = vbYes Then Range("C9:Z140").FormatConditions.Delete
+
+End Sub
