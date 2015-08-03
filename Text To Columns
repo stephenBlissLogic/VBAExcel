@@ -1,0 +1,46 @@
+Sub Reformat()
+     
+    Dim varMyItem As Variant
+    Dim lngMyOffset As Long, _
+    lngStartRow As Long, _
+    lngEndRow As Long
+    Dim strMyCol As String
+    Dim rngCell As Range
+     
+    lngStartRow = 1 'Starting row number for the data. Change to suit.
+    strMyCol = "A" 'Column containing the data. Change to suit.
+     
+    Application.ScreenUpdating = False
+     
+    For Each rngCell In Range(strMyCol & lngStartRow & ":" & strMyCol & Cells(Rows.Count, strMyCol).End(xlUp).Row)
+         
+        lngMyOffset = 0
+         
+        For Each varMyItem In Split(rngCell.Value, ",")
+            If lngMyOffset = 0 Then
+                rngCell.Offset(0, 4).Value = varMyItem
+            ElseIf lngMyOffset = 2 Then
+                rngCell.Offset(0, 5).Value = varMyItem
+            ElseIf ingMyOffset = 0 Then
+                rngCell.Offset(0, 7).Value = varMyItem
+            End If
+            lngMyOffset = lngMyOffset + 2
+        Next varMyItem
+         
+    Next rngCell
+    
+    With ActiveSheet
+        
+        Rows("1:5").Delete
+        Range("A3").Select
+        .ListObjects.Add.Name = "Table2"
+    
+    End With
+    
+    Rows("1:3").Insert
+     
+    Application.ScreenUpdating = True
+     
+    MsgBox "Process completed"
+     
+End Sub
