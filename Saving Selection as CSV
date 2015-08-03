@@ -1,0 +1,210 @@
+Sub BankImport()
+
+'
+Dim MainWB As Workbook
+Dim NewWB As Workbook
+Dim wb As Workbook
+Dim rng As Range
+
+Workbooks.Open Filename:="C:\Users\STEPHEN\Desktop\BULKLINK\BLA_Import.xlsx", origin:=xlWindows
+Set MainWB = Workbooks("BLA_Import.xlsx")
+
+With MainWB
+    .Activate
+    Worksheets("Bank").Select
+    Columns("B:F").Select
+    Selection.Copy
+    Selection.End(xlDown).EntireRow.Select
+    Selection.Interior.ColorIndex = 35
+End With
+
+Set NewWB = Workbooks.Add
+
+With NewWB
+    .Activate
+    With ActiveSheet
+        Range("A1").PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
+        Rows("1").Delete
+        Columns("B:B").Select
+        Selection.Replace What:=",", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    End With
+ActiveWorkbook.SaveAs "C:\Users\STEPHEN\Desktop\BULKLINK\Bank.csv", xlCSV
+ActiveWorkbook.Close
+End With
+
+MainWB.Close
+    
+End Sub
+
+Sub JournalImport()
+
+'
+Dim MainWB As Workbook
+Dim NewWB As Workbook
+Dim wb As Workbook
+Dim rng As Range
+
+Workbooks.Open Filename:="C:\Users\STEPHEN\Desktop\BULKLINK\BLA_Import.xlsx", origin:=xlWindows
+Set MainWB = Workbooks("BLA_Import.xlsx")
+
+With MainWB
+    .Activate
+    Worksheets("Journal").Select
+    Columns("B:G").Select
+    Selection.Copy
+    Selection.End(xlDown).EntireRow.Select
+    Selection.Interior.ColorIndex = 35
+End With
+
+Set NewWB = Workbooks.Add
+
+With NewWB
+    .Activate
+    With ActiveSheet
+        Range("A1").PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
+        Rows("1").Delete
+        Columns("B:B").Select
+        Selection.Replace What:=",", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    End With
+ActiveWorkbook.SaveAs "C:\Users\STEPHEN\Desktop\BULKLINK\Journal.csv", xlCSV
+ActiveWorkbook.Close
+End With
+
+MainWB.Close
+    
+End Sub
+
+Sub JournalImport_SubModule()
+
+'
+Dim MainWB As Workbook
+Dim NewWB As Workbook
+Dim wb As Workbook
+Dim rng As Range
+
+Workbooks.Open Filename:="C:\Users\STEPHEN\Desktop\BULKLINK\BLA_Import.xlsx", origin:=xlWindows
+Set MainWB = Workbooks("BLA_Import.xlsx")
+
+With MainWB
+    .Activate
+    Worksheets("Journal_Sub").Select
+    Columns("B:H").Select
+    Selection.Copy
+    Selection.End(xlDown).EntireRow.Select
+    Selection.Interior.ColorIndex = 35
+End With
+
+Set NewWB = Workbooks.Add
+
+With NewWB
+    .Activate
+    With ActiveSheet
+        Range("A1").PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
+        Rows("1").Delete
+        Columns("B:B").Select
+        Selection.Replace What:=",", Replacement:="", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    End With
+ActiveWorkbook.SaveAs "C:\Users\STEPHEN\Desktop\BULKLINK\Journal_Sub.csv", xlCSV
+ActiveWorkbook.Close
+End With
+
+MainWB.Close
+    
+End Sub
+
+Sub AngDentalPayroll()
+
+'
+Dim MainWB As Workbook
+Dim NewWB As Workbook
+Dim wb As Workbook
+Dim rng As Range
+
+Workbooks.Open Filename:="C:\Users\BLA_STEPHEN\Desktop\Bliss Logic Administration\FINANCIAL TOOLS\Excel Payroll 2014-15 - Melb Smile Studio - v1.xlsm", origin:=xlWindows
+Set MainWB = Workbooks("Excel Payroll 2014-15 - Melb Smile Studio - v1.xlsm")
+
+'Workbooks.Open Filename:="C:\Users\BLA_STEPHEN\Desktop\Bliss Logic Administration\FINANCIAL TOOLS\Excel Payroll 2013-14 - Melb Smile Studio.xlsm", origin:=xlWindows
+'Set MainWB = Workbooks("Excel Payroll 2013-14 - Melb Smile Studio.xlsm")
+
+With MainWB
+    .Activate
+    Worksheets("SQL Payroll").Select
+    'Columns("B:AB").Select
+    'Range("B1,D1,H1,I1").EntireColumn.Select
+    Range("B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,M1,N1,O1,P1,R1,S1").EntireColumn.Select
+    Selection.Copy
+End With
+
+Set NewWB = Workbooks.Add
+
+With NewWB
+    .Activate
+    With ActiveSheet
+        Range("A1").PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
+        Rows("1").Delete
+        Range("C1,E1").EntireColumn.Select
+        Selection.NumberFormat = "yyyymmdd"
+        Columns("G:J").Select
+        Selection.NumberFormat = "h:mm:ss AM/PM"
+    End With
+ActiveWorkbook.SaveAs "C:\Users\STEPHEN\Desktop\BULKLINK\Dropbox.csv", xlCSV
+ActiveWorkbook.Close
+End With
+
+MainWB.Close
+    
+End Sub
+
+Sub SkillTilingPayroll()
+
+'
+Dim MainWB As Workbook
+Dim NewWB As Workbook
+Dim wb As Workbook
+Dim rng As Range
+
+Workbooks.Open Filename:="C:\Users\BLA_STEPHEN\Desktop\Bliss Logic Administration\FINANCIAL TOOLS\Excel Payroll 2014-15 - Skill Tiling - v1.xlsm", origin:=xlWindows
+Set MainWB = Workbooks("Excel Payroll 2014-15 - Skill Tiling - v1.xlsm")
+
+'Workbooks.Open Filename:="C:\Users\BLA_STEPHEN\Desktop\Bliss Logic Administration\FINANCIAL TOOLS\Excel Payroll 2013-14 - Melb Smile Studio.xlsm", origin:=xlWindows
+'Set MainWB = Workbooks("Excel Payroll 2013-14 - Melb Smile Studio.xlsm")
+
+With MainWB
+    .Activate
+    Worksheets("SQL Payroll").Select
+    'Columns("B:AB").Select
+    'Range("B1,D1,H1,I1").EntireColumn.Select
+    Range("B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,M1,N1,O1,P1,Q1,S1,T1").EntireColumn.Select
+    Selection.Copy
+End With
+
+Set NewWB = Workbooks.Add
+
+With NewWB
+    .Activate
+    With ActiveSheet
+        Range("A1").PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
+        Rows("1:6").Delete
+        Range("C1,E1").EntireColumn.Select
+        Selection.NumberFormat = "yyyymmdd"
+        Columns("G:J").Select
+        Selection.NumberFormat = "h:mm:ss AM/PM"
+    End With
+ActiveWorkbook.SaveAs "C:\Users\STEPHEN\Desktop\BULKLINK\Dropbox.csv", xlCSV
+ActiveWorkbook.Close
+End With
+
+MainWB.Close
+    
+End Sub
