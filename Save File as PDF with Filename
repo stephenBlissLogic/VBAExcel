@@ -1,0 +1,48 @@
+Sub PDFActiveSheet()
+Dim ws As Worksheet
+Dim strPath As String
+Dim myFile As Variant
+Dim strFile As String
+Dim rng As Range
+
+On Error GoTo errHandler
+ 
+
+Set ws = ActiveSheet
+
+'enter name and select folder for file
+' start in current workbook folder
+strFile = Replace(Replace(ws.Name, " ", ""), ".", "_") _
+            & "_" _
+            & Format(Cells(7, 4).Value, "ddmmmyyyy") _
+            & "-" _
+            & Cells(6, 2).Value _
+            & ".pdf"
+            '& Format(Now(), "yyyymmdd\_hhmm") _
+
+strFile = ThisWorkbook.Path & "\" & strFile
+
+myFile = Application.GetSaveAsFilename _
+    (InitialFileName:=strFile, _
+        FileFilter:="PDF Files (*.pdf), *.pdf", _
+        Title:="Select Folder and FileName to save")
+
+If myFile <> "False" Then
+    ws.ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        FileName:=myFile, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=False
+
+    MsgBox "PDF file has been created."
+End If
+
+exitHandler:
+    Exit Sub
+errHandler:
+    MsgBox "Could not create PDF file"
+    Resume exitHandler
+End Sub
+
