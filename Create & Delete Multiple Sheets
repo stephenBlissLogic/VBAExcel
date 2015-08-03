@@ -1,0 +1,33 @@
+Sub CreateSheet()
+
+Dim i As Byte
+Dim cell As Range
+Dim ws As Worksheet
+
+Set ws = Sheets("Sheet2")
+
+For Each cell In ws.Range("A1:A31")
+'For i = ws.Range("C1")
+If cell.Value <> "" Then
+
+    Sheets("Template").Copy before:=Sheets("Template")
+    ActiveSheet.Name = cell.Value & ws.Range("B1") & "15"
+    Range("C4") = cell.Value & ws.Range("B1") & "15"
+
+End If
+Next cell
+
+
+End Sub
+
+Sub DeleteSheet()
+
+Dim ws As Worksheet
+Application.DisplayAlerts = False
+For Each ws In Worksheets
+If ws.Name <> "Template" And ws.Name <> "Sheet1" And ws.Name <> "Sheet2" Then ws.Delete
+Next
+Application.DisplayAlerts = True
+
+End Sub
+
