@@ -1,0 +1,14 @@
+Sub GitHub()
+
+Dim WebUrl As String
+
+WebUrl = "https://github.com/login"
+
+Shell ("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe -url " & WebUrl)
+
+Application.Wait (Now + TimeValue("0:00:05"))
+SendKeys "UserName", True
+SendKeys "{tab}", True
+SendKeys "Password", True
+
+End Sub
