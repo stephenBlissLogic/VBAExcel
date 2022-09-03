@@ -46,3 +46,53 @@ errHandler:
     Resume exitHandler
 End Sub
 
+Sub PrintAllSheetsToPDF()
+    'SUBROUTINE: PrintAllSheetsToPDF
+    'DEVELOPER: Ryan Wells
+    'DESCRIPTION: Combine all your worksheets into one PDF
+    Dim strSheets() As String
+    Dim strfile As String
+    Dim sh As Worksheet
+    Dim icount As Integer
+    Dim myfile As Variant
+    
+    'Save Chart Sheet names to an Array
+    For Each sh In ActiveWorkbook.Worksheets
+    'If sh.Visible = xlSheetVisible Then
+    If sh.Range("Z1").Value Like "*print*" Then
+    ReDim Preserve strSheets(icount)
+    strSheets(icount) = sh.Name
+    icount = icount + 1
+    End If
+    Next sh
+    
+    If icount = 0 Then 'No charts found. Punch error
+    MsgBox "A PDF cannot be created because no sheets were found.", , "No Sheets Found"
+    Exit Sub
+    End If
+    
+    'Prompt for save location
+    strfile = "Sheets" & "_" _
+    & Format(Now(), "yyyymmdd_hhmmss") _
+    & ".pdf"
+    strfile = ThisWorkbook.Path & "\" & strfile
+    
+    myfile = Application.GetSaveAsFilename _
+    (InitialFileName:=strfile, _
+    FileFilter:="PDF Files (*.pdf), *.pdf", _
+    Title:="Select Folder and File Name to Save as PDF")
+    
+    If myfile <> "False" Then 'save as PDF
+    'ThisWorkbook.Sheets(strSheets).Select
+    
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:= _
+    myfile, Quality:=xlQualityStandard, IncludeDocProperties:=True, _
+    IgnorePrintAreas:=False, OpenAfterPublish:=True
+    Else
+    MsgBox "No File Selected. PDF will not be saved", vbOKOnly, "No File Selected"
+    End If
+
+End Sub
+
+
+
